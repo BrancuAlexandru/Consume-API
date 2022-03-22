@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consuming APIs</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div class="title">
+    <h1>Consuming APIs</h1>
+  </div>
+  <div class="form">
+    <input id="titleInput" type="text" placeholder=" Title" autocomplete="off">
+    <textarea id="textInput" cols="20" rows="4" placeholder=" Body" autocomplete="off"></textarea>
+    <input id="addPost" type="submit" value="Submit">
+  </div>
+  <div id="successPopup"></div>
+  <div id="navbar">
+    <div class="buttons">
+      <button id="getPost">Get Post</button>
+      <button id="getImage">Get Image</button>
+      <button id="getUser">Get User</button>
+      <button id="clearAll">Clear All</button>
+    </div>
+  </div>
+  <div id="spacer"></div>
+  <div id="incoming">
+    <div id="fetchedPosts"></div>
+    <div id="fetchedImages"></div>
+    <div id="fetchedUsers"></div>
+  </div>
+  <script src="./App.js"></script>
+</body>
+</html>

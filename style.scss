@@ -1,0 +1,293 @@
+@mixin stuffDiv {
+  background-color: white;
+  box-shadow: none;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  &:hover {
+    box-shadow: -2px 3px 4px #0000006a;
+    transition: .3s ease box-shadow;
+  }
+}
+
+@mixin buttons {
+  color: white;
+  border-radius: 3px;
+  border: 2px solid rgb(51, 8, 16);
+  padding: 5px 10px;
+  margin: 0 10px;
+  font-family: 'Helvetica';
+  font-size: 1em;
+}
+
+@mixin blueButtons {
+  background-color: rgb(43, 43, 255);
+  &:hover:active {
+    color: rgb(228, 228, 228);
+    background-color: rgb(35, 35, 207);
+  }
+  &:hover {
+    background-color: rgb(72, 72, 255);
+    cursor: pointer;
+  }
+}
+
+@mixin fetchedStuff {
+  flex-basis: 32%;
+  margin-bottom: 20px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+#spacer {
+  margin: 20px 5%;
+  background-color: rgb(202, 202, 202);
+  padding: 1px 0;
+  width: 90%;
+}
+
+.title {
+  h1 {
+    text-align: center;
+    font-family: 'Helvetica';
+    margin-top: 15px;
+  }
+}
+
+.postDiv {
+  @include stuffDiv;
+  padding: 15px 30px;
+  h2 {
+    font-family: 'Georgia';
+    margin-bottom: 10px;
+  }
+  p {
+    font-family: 'Courier New';
+    margin-left: 10px;
+  }
+}
+
+.imageDiv {
+  @include stuffDiv;
+  padding: 15px 30px;
+  h3 {
+    font-family: 'Georgia';
+  }
+}
+
+.userDiv {
+  @include stuffDiv;
+  padding: 15px 100px;
+  max-width: 50%;
+  h2 {
+    font-family: 'Georgia';
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  h3 {
+    font-family: 'Helvetica';
+    margin-left: 10px;
+    text-align: center;
+  }
+  p {
+    font-family: 'Courier New';
+    margin-left: 10px;
+    text-align: center;
+  }
+}
+
+#addPost {
+  @include buttons;
+  background-color: rgb(0, 163, 0);
+  &:hover:active {
+    color: rgb(228, 228, 228);
+    background-color: rgb(0, 128, 0);
+  }
+  &:hover {
+    background-color: rgb(0, 196, 0);
+    cursor: pointer;
+  }
+}
+
+.buttons {
+  text-align: center;
+  position: sticky;
+  top: 10px;
+  #clearAll {
+    @include buttons;
+    background-color: crimson;
+    &:hover:active {
+      color: rgb(228, 228, 228);
+      background-color: rgb(131, 14, 38);
+    }
+    &:hover {
+      background-color: rgb(238, 23, 66);
+      cursor: pointer;
+    }
+  }
+  #getUser {
+    @include buttons;
+    @include blueButtons;
+  }
+  #getImage {
+    @include buttons;
+    @include blueButtons;
+  }
+  #getPost {
+    @include buttons;
+    @include blueButtons;
+  }
+}
+
+#navbar {
+  position: sticky;
+  left: 25%;
+  top: 0;
+  height: 32px;
+  width: 50%;
+  background-color: #f5f5f5;
+  transition: .3s ease background-color;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 20px;
+  #titleInput {
+    padding: 2px;
+    &:focus {
+      outline: none;
+    }
+  }
+  #textInput {
+    margin: 10px 0;
+    padding: 5px;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+#incoming {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  #fetchedPosts {
+    @include fetchedStuff;
+  }
+  #fetchedImages {
+    @include fetchedStuff;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 15px;
+    img {
+      width: 300px;
+      height: 300px;
+    }
+  }
+  #fetchedUsers {
+    @include fetchedStuff;
+  }
+}
+
+#successPopup {
+  max-width: 120px;
+  #successDiv {
+    animation: popup_slide_in .7s ease-out;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 15px 80px;
+    border-radius: 10px;
+    left: 5%;
+    bottom: 5%;
+    max-width: 120px;
+    box-shadow: -2px 3px 4px #0000006a;
+    &.closed {
+      animation: popup_slide_out .7s ease-in;
+    }
+    h1 {
+      font-family: 'Monaco';
+      font-size: 1.4em;
+      margin-top: 10px;
+    }
+    h2 {
+      font-family: 'Arial';
+    }
+    h3 {
+      font-family: 'Lucida Console';
+      font-size: .6em;
+    }
+    h4 {
+      color: white;
+      background-color: crimson;
+      border-radius: 3px;
+      padding: 2px 10px;
+      margin-top: 10px;
+      font-size: .8em;
+      &:hover:active {
+        color: rgb(240, 240, 240);
+        background-color: rgb(165, 18, 47);
+      }
+      &:hover {
+        background-color: rgb(238, 23, 66);
+        cursor: pointer;
+      }
+    }
+    p {
+      font-family: 'Courier New';
+    }
+  }
+  #closeButton {
+    display: inline;
+  }
+}
+
+@keyframes popup_slide_out {
+  100% {
+    left: -50%;
+  }
+}
+
+@keyframes popup_slide_in {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 5%;
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
